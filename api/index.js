@@ -38,7 +38,7 @@ const jwtSecret = process.env.JWT_SECRET;
 app.use(express.json());
 app.use(cors({
     credentials: true,
-    origin:["https://chat-deploy-client.vercel.app"]
+    origin:"https://chat-deploy-client.vercel.app",
 }));
 app.use(cookieParser());
 // Test Route
