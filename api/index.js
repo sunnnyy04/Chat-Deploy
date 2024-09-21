@@ -38,8 +38,17 @@ const jwtSecret = process.env.JWT_SECRET;
 app.use(express.json());
 app.use(cors({
     credentials: true,
-    origin:"https://chat-deploy-client.vercel.app",
+    origin: (origin, callback) => {
+        if (allowedOrigins.includes(origin) || !origin) {
+            callback(null, true);
+        } else {
+            callback(new Error("Not allowed by CORS"));
+        }
+    }
 }));
+
+// Handle preflight requests
+app.options('*', cors());
 app.use(cookieParser());
 // Test Route
 app.get("/test", (req, res) => {
