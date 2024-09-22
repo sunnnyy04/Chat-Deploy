@@ -23,7 +23,7 @@ function Chat() {
     connectToWs();
   }, []);
   function connectToWs(){
-    const ws = new WebSocket('ws://localhost:4000');
+    const ws = new WebSocket('wss://chat-deploy-api.vercel.app');
     setWs(ws);
     ws.addEventListener('message', handleMessage);
     ws.addEventListener('close', () =>{
