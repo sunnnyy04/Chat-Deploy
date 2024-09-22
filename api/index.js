@@ -36,9 +36,9 @@ const jwtSecret = process.env.JWT_SECRET;
 
 // Middleware Setup
 const allowedOrigins = [
-    "https://chat-deploy-client.vercel.app/", // Your deployed frontend on Vercel
-    "http://localhost:3000","https://chat-deploy-client-m8s655gsp-sunnny04.vercel.app/",
-    "https://chat-deploy-client-git-main-sunnny04.vercel.app/"// For local development
+    "https://chat-deploy-client.vercel.app", // Your deployed frontend on Vercel
+    "http://localhost:3000","https://chat-deploy-client-m8s655gsp-sunnny04.vercel.app",
+    "https://chat-deploy-client-git-main-sunnny04.vercel.app"// For local development
 ];
 app.use(express.json());
 app.use(cors({
