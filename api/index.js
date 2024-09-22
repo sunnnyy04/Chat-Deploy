@@ -15,11 +15,11 @@ const bcryptSalt = bcrypt.genSaltSync(10);
 dotenv.config();
 
 // MongoDB Connection
-console.log(process.env.MONGO_URI)
+const uri="mongodb+srv://sunnyshukla4900:sunny123@cluster0.er9kk.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
 async function connectDB() {
     try {
         // Await the mongoose connection directly and log success
-        await mongoose.connect(process.env.MONGO_URI);
+        await mongoose.connect(uri);
         console.log("Database connected successfully");
     } catch (err) {
         // Log the full error object to capture the reason or any specific issues
