@@ -40,6 +40,13 @@ const allowedOrigins = [
     "http://localhost:3000","https://chat-deploy-client-m8s655gsp-sunnny04.vercel.app",
     "https://chat-deploy-client-git-main-sunnny04.vercel.app"// For local development
 ];
+app.use((req, res, next) => {
+    res.header("Access-Control-Allow-Origin", "https://chat-deploy-client.vercel.app");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
+    res.header("Access-Control-Allow-Credentials", "true");
+    next();
+});
 app.use(express.json());
 app.use(cors({
     credentials: true,
@@ -53,7 +60,10 @@ app.use(cors({
 }));
 
 // Handle preflight requests
-app.options('*', cors());
+app.use(cors({
+    credentials: true,
+    origin: "https://chat-deploy-client.vercel.app", // Specify the Vercel client URL
+}));
 app.use(cookieParser());
 // Test Route
 app.get("/test", (req, res) => {
